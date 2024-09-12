@@ -9,7 +9,7 @@ import { UserContextProvider } from './UserContext.jsx';
 import { useEffect } from 'react';
 import AccountPage from './pages/AccountPage.jsx';
 
-axios.defaults.baseURL ='http://localhost:4002';
+axios.defaults.baseURL ='http://localhost:4003';
 axios.defaults.withCredentials = true;
 
 

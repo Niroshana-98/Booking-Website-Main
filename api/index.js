@@ -74,4 +74,7 @@ app.get('/profile', (req,res) => {
         res.json(null);
     }
 });
-app.listen(4002);
+app.post('/logout', (req, res) =>{
+    res.cookie('token', '').json(true);
+});
+app.listen(4003);
