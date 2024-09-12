@@ -19,10 +19,10 @@ export default function AccountPage(){
     }
 
     if(!ready){
-        //return 'Loading...';
+        return 'Loading...';
     }
 
-    if(ready && !user){
+    if(ready && !user && !redirect){
         return <Navigate to={'/login'}/>
     }
 
