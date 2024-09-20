@@ -7,7 +7,7 @@ export default function PlacesPage(){
     const {action} = useParams();
     const [title, setTitle] = useState('');
     const [address, setAddress] = useState('');
-    const [addesPhotos, setAddedPhotos] = useState([]);
+    const [addedPhotos, setAddedPhotos] = useState([]);
     const [photoLink, setPhotoLink] = useState('');
     const [description, setDescription] = useState('');
     const [perks, setPerks] = useState([]);
@@ -55,9 +55,9 @@ export default function PlacesPage(){
         axios.post('/upload', data,{
             headers: {'Content-type' : 'multipart/form-data'}
         }).then(response =>{
-            const {data:filename} = response;
+            const {data:filenames} = response;
             setAddedPhotos(prev => {
-                return[...prev, filename];
+                return[...prev, ...filenames];
             });
         });
     }
@@ -89,9 +89,9 @@ export default function PlacesPage(){
                             <button onClick={addPhotoByLink} className="bg-gray-200 px-4 rounded-2xl">Add&nbsp;Photo</button>
                         </div>
                         <div className="mt-2 gap-2 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-                            {addesPhotos.length > 0 && addesPhotos.map(link => (
+                            {addedPhotos.length > 0 && addedPhotos.map(link => (
                                 <div>
-                                    <img className="rounded-2xl" src={"http://localhost:4003/uploads/"+link}/>
+                                    <img className="rounded-2xl" src={`http://localhost:4003/${link}`} alt="Uploaded"/>
                                 </div>
                             ))}
                             <label className=" cursor-pointer flex justify-center items-center gap-1 border bg-transparent rounded-2xl p-2 text-2xl text-gray-600">
