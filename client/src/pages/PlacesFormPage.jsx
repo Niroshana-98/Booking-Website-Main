@@ -39,7 +39,6 @@ export default function PlacesFormPage(){
         await axios.post('/places',{
             title, address, addedPhotos, description, perks, extraInfo, checkIn, checkOut, maxGuests
         });
-        setRedirectToPlacesList(true);
     }
 
     return(
