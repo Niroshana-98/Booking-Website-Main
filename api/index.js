@@ -142,10 +142,11 @@ app.get('/places/:id', async(req,res) => {
 app.put('places/:id', async(req,res) =>{
     const {token} = req.cookies;
     const {id, title, address, addedPhotos, description, perks, extraInfo, checkIn, checkOut, maxGuests,} = req.body;
-    const placeDoc = await Place.findById(id);
     jwt.verify(token, jwtSecret, {}, async(err, userData) => {
+        const placeDoc = await Place.findById(id);
         if(userData.id === placeDoc.owner){
-            pla
+            placeDoc.set({});
+            placeDoc.save();
         }
     });
 })
